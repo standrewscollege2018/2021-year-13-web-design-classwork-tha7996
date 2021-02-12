@@ -6,34 +6,92 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link rel="stylesheet" href="stylesheet.css">
+    <link rel="stylesheet" href="custom.css">
 
     <title>StAC</title>
   </head>
   <body>
 
-    <nav class="navbar bg-navy">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-navy">
 
       <a class="navbar-brand" href="#"><img src="images/logo.png" alt="stac-logo"></a>
 
-      <div class="collapse navbar-md-collapse">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-        <ul>
-          <li class="text-white">Home</li>
-          <li>News</li>
-          <li>About</li>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+        <ul class="navbar-nav mr-auto">
+
+          <li class="nav-item"><a class="nav-link nav" href="#">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">News</a></li>
+          <li class="nav-item"><a class="nav-link dropdown-toggle" href="#" id="navbarDropdown">About Us</a></li>
+
         </ul>
+
+        <a class="nav-item nav-link"href="#">Book a Tour</a>
+
+        <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Go</button>
+        </form>
+
+      </div>
+
+    </nav>
+
+    <div class="body p-3">
+
+      <div class="jumbotron">
+        <h1 class="display-4">St Andrew's College - Framing our Future</h1>
+        <p class="lead">Life is Coed</p>
+        <p class="text-green">Our vision is to be at the leading edge of high performance educational practice, in a community which values caring for others, tradition and creativity, in order to provide young people with the roots and wings to flourish in an ever-changing world</p>
+      </div>
+
+      <div class="row">
+
+        <div class="col-12 col-lg-4">
+          <div class="card">
+            <img class="card-img-top" src="images/chapel.jpg" alt="">
+            <div class="card-body">
+              <h2 class="card-title">Beautiful Facilities</h2>
+              <p class="card-text">Built after the 2011 Earthquakes, our Centennial Chapel is a great place to feel at peace.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-lg-4">
+          <div class="card">
+            <img class="card-img-top" src="images/chapel.jpg" alt="">
+            <div class="card-body">
+              <h2 class="card-title">Beautiful Facilities</h2>
+              <p class="card-text">Built after the 2011 Earthquakes, our Centennial Chapel is a great place to feel at peace.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-lg-4">
+          <div class="card">
+            <img class="card-img-top" src="images/chapel.jpg" alt="">
+            <div class="card-body">
+              <h2 class="card-title">Beautiful Facilities</h2>
+              <p class="card-text">Built after the 2011 Earthquakes, our Centennial Chapel is a great place to feel at peace.</p>
+            </div>
+          </div>
+        </div>
 
       </div>
 
 
+    </div>
 
 
+    <div class="footer bg-navy text-white text-center p-3">
 
-    </nav>
+      St Andrew's College - 347 Papanui Road, Christchurch 8052, 03 940 2000
 
-
-
+    </div>
 
   </body>
 </html>
