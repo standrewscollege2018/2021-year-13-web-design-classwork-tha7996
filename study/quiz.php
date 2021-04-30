@@ -33,8 +33,10 @@
 
         echo("<form action='insert.php?quiz_id=$quiz_id&quiz_name=$quiz_name' method='post'>");
 
+        // will keep track of question
         $question_number = 0;
 
+        // loop throuhg question ids
         foreach ($item['questions'] as $question_id ) {
             $sql = "SELECT * FROM wp_mlw_questions WHERE question_id=$question_id";
             $questions = mysqli_query($dbconnect, $sql);
@@ -48,7 +50,9 @@
               $answer_array = unserialize($aa['answer_array']);
               $question_type = $aa['question_type_new'];
 
-              // multichoice question type
+              // display question depending on question type
+
+              // multichoice
               if ($question_type == 0){
               // display mutlichoice options
                 foreach($answer_array as $answer){
@@ -65,7 +69,7 @@
                 echo "<input type='number' name='$question_number'>";
               }
 
-              // this hidden input sends the question type of the latest question so that this can be inserted into databases
+              // this hidden input sends the question id and type of the latest question so that this can be inserted into databases
               $info = serialize(array($question_id, $question_type));
               echo "<input type='hidden' name='type$question_number' value='$info'/>";
 
