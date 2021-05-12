@@ -62,7 +62,7 @@ function create_quiz_results(){
   $question_number=0;
   // loops through post array answers
   // post array has hidden inputs for each question.
-  // These inputs contain the question type (according to QSM) and are in the form 'type[type]'
+  // These inputs contain the question type (according to QSM) and are in the form 'type[question number]'
   // first check if this variable exists as answers do not return if left blank, which is a problem
   while (array_key_exists("type$question_number", $_POST)) {
 

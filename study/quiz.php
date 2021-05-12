@@ -1,5 +1,5 @@
 <?php
-  $quiz_id = $_GET['quiz_id'];
+   $quiz_id = $_GET['quiz_id'];
 
    // In this section I am trying to display the questions in a specific quiz
    $quiz_sql = "SELECT * FROM wp_mlw_quizzes WHERE quiz_id=$quiz_id";
@@ -12,83 +12,90 @@
    // unserilize no. 2: quiz options
    $quiz_options = unserialize($quiz_settings['quiz_options']);
 
+
    // get quiz name
-   $quiz_name = $quiz_options['quiz_name'];
+   $quiz_name = $quiz_aa['quiz_name'];
    echo "<h1>$quiz_name</h1>";
 
-   foreach ($quiz_settings as $setting) {
-    // $quiz_settings has 5 sub arrays
-    // unserialize each sub array
-    $setting_un = unserialize($setting);
+   // form for question
+   echo("<form action='insert.php?quiz_id=$quiz_id&quiz_name=$quiz_name' method='post'>");
 
-    // Loop through sub array looking for questions in quiz
-    foreach ($setting_un as $item) {
-      // if we find questions, go get them from the questions table
-      if(isset($item['questions'])) {
-
-        // -------------------------------------------------
-        //                DISPLAY QUIZ QUESTIONS
-        // -------------------------------------------------
+   // will keep track of question
+   $question_number = 0;
 
 
-        echo("<form action='insert.php?quiz_id=$quiz_id&quiz_name=$quiz_name' method='post'>");
+   // QSM stores the questions for each quiz in one of two places:
+   // 1. in the questions table and linked via $quiz_id
+   // 2. if the order is changed, another array $qpages is created in the quiz_settings field, containing the questions
+   // thus we have to first check if qpages exists so we can get questions in correct order
+   if(isset($quiz_settings['qpages'])){
+     $qpages = unserialize($quiz_settings['qpages']);
+     $question_ids = $qpages[0]['questions'];
+     // contians question ids. get questions using these, and pass each into display_question function
+     foreach ($question_ids as $question_id ) {
+       $sql = "SELECT * FROM wp_mlw_questions WHERE question_id=$question_id";
+       $questions = mysqli_query($dbconnect, $sql);
+       $aa = mysqli_fetch_assoc($questions);
+       display_question($aa, $question_number);
+     }
+   }
+   else{
+     // else just select all questions at once and pass them in
+     $sql = "SELECT * FROM wp_mlw_questions WHERE quiz_id=$quiz_id";
+     $questions = mysqli_query($dbconnect, $sql);
+     while($aa = mysqli_fetch_assoc($questions)){
+       display_question($aa, $question_number);
+     }
+   }
 
-        // will keep track of question
-        $question_number = 0;
+   echo "<input type='submit'>";
+   echo("</form>");
 
-        // loop throuhg question ids
-        foreach ($item['questions'] as $question_id ) {
-            $sql = "SELECT * FROM wp_mlw_questions WHERE question_id=$question_id";
-            $questions = mysqli_query($dbconnect, $sql);
-            $aa = mysqli_fetch_assoc($questions);
-            do {
+   function display_question($aa, $question_number){
 
-              $question_settings = unserialize($aa['question_settings']);
-              echo $question_settings['question_title'];
-              echo "<br>";
+      // -------------------------------------------------
+      //                DISPLAY QUIZ QUESTIONs
+      // -------------------------------------------------
 
-              $answer_array = unserialize($aa['answer_array']);
-              $question_type = $aa['question_type_new'];
+      $question_id = $aa['question_id'];
+      $question_settings = unserialize($aa['question_settings']);
+      echo $question_settings['question_title'];
+      echo "<br>";
 
-              // display question depending on question type
+      $answer_array = unserialize($aa['answer_array']);
+      $question_type = $aa['question_type_new'];
 
-              // multichoice
-              if ($question_type == 0){
-              // display mutlichoice options
-                foreach($answer_array as $answer){
-                  $option = $answer[0];
-                  echo("<input type='radio' name='$question_number' value='$option'>$option<br>");
-                }
-              }
-              // short answer question type
-              else if ($question_type == 3){
-                echo "<input type='text' name='$question_number'><br>";
-              }
-              // number choice
-              else if ($question_type == 7){
-                echo "<input type='number' name='$question_number'>";
-              }
+      // display question depending on question type
 
-              // this hidden input sends the question id and type of the latest question so that this can be inserted into databases
-              $info = serialize(array($question_id, $question_type));
-              echo "<input type='hidden' name='type$question_number' value='$info'/>";
-
-              $question_number += 1;
-
-
-              echo "<br/>";
-
-
-            } while ($aa = mysqli_fetch_assoc($questions));
-
+      // multichoice OR a description thing
+      if ($question_type == 0){
+        // descriptions are for some reason called 
+        if(empty($answer_array)){
+          echo $aa['question_name'];
         }
-        echo "<input type='submit'>";
-        echo("</form>");
+        else{
+        // display mutlichoice options
+          foreach($answer_array as $answer){
+            $option = $answer[0];
+            echo("<input type='radio' name='$question_number' value='$option'>$option<br>");
+          }
+        }
       }
+      // short answer question type
+      else if ($question_type == 3){
+        echo "<input type='text' name='$question_number'><br>";
+      }
+      // number choice
+      else if ($question_type == 7){
+        echo "<input type='number' name='$question_number'>";
+      }
+
+      // this hidden input sends the question id and type of the latest question so that this can be inserted into databases
+      $info = serialize(array($question_id, $question_type));
+      echo "<input type='hidden' name='type$question_number' value='$info'/>";
+
+      $question_number += 1;
+
+      echo "<br/>";
     }
-
-
-  }
-
-
 ?>
