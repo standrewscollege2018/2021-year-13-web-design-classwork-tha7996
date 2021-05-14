@@ -9,9 +9,6 @@
 
    // unserilize no.1 : quiz settings
    $quiz_settings = unserialize($quiz_aa['quiz_settings']);
-   // unserilize no. 2: quiz options
-   $quiz_options = unserialize($quiz_settings['quiz_options']);
-
 
    // get quiz name
    $quiz_name = $quiz_aa['quiz_name'];
@@ -33,10 +30,12 @@
      $question_ids = $qpages[0]['questions'];
      // contians question ids. get questions using these, and pass each into display_question function
      foreach ($question_ids as $question_id ) {
+       echo "qpages";
        $sql = "SELECT * FROM wp_mlw_questions WHERE question_id=$question_id";
        $questions = mysqli_query($dbconnect, $sql);
        $aa = mysqli_fetch_assoc($questions);
        display_question($aa, $question_number);
+       $question_number += 1;
      }
    }
    else{
@@ -44,7 +43,9 @@
      $sql = "SELECT * FROM wp_mlw_questions WHERE quiz_id=$quiz_id";
      $questions = mysqli_query($dbconnect, $sql);
      while($aa = mysqli_fetch_assoc($questions)){
+
        display_question($aa, $question_number);
+       $question_number += 1;
      }
    }
 
@@ -52,6 +53,7 @@
    echo("</form>");
 
    function display_question($aa, $question_number){
+
 
       // -------------------------------------------------
       //                DISPLAY QUIZ QUESTIONs
@@ -65,11 +67,14 @@
       $answer_array = unserialize($aa['answer_array']);
       $question_type = $aa['question_type_new'];
 
+      // 0 = required, 1 = not required
+      $required = ($question_settings['required'] == 0 ? 'required' : '');
+
       // display question depending on question type
 
       // multichoice OR a description thing
       if ($question_type == 0){
-        // descriptions are for some reason called 
+        // descriptions are for some reason called
         if(empty($answer_array)){
           echo $aa['question_name'];
         }
@@ -77,24 +82,23 @@
         // display mutlichoice options
           foreach($answer_array as $answer){
             $option = $answer[0];
-            echo("<input type='radio' name='$question_number' value='$option'>$option<br>");
+            echo("<input type='radio' id='$question_number$option' name='$question_number' value='$option' $required>");
+            echo("<label for='$question_number$option'>$option</label><br>");
           }
         }
       }
       // short answer question type
       else if ($question_type == 3){
-        echo "<input type='text' name='$question_number'><br>";
+        echo "<input type='text' name='$question_number' $required><br>";
       }
       // number choice
       else if ($question_type == 7){
-        echo "<input type='number' name='$question_number'>";
+        echo "<input type='number' name='$question_number' $required>";
       }
 
       // this hidden input sends the question id and type of the latest question so that this can be inserted into databases
       $info = serialize(array($question_id, $question_type));
       echo "<input type='hidden' name='type$question_number' value='$info'/>";
-
-      $question_number += 1;
 
       echo "<br/>";
     }
