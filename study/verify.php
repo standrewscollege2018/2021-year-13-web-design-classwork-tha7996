@@ -7,6 +7,7 @@
   // this function taken from https://stackoverflow.com/questions/9854480/using-wordpress-user-password-outside-wordpress-itself
   // modified to check password instead of create
   function wp_check_password($password, $stored_hash) {
+    // calls wordpress's
         global $wp_hasher;
 
         if ( empty($wp_hasher) ) {
@@ -19,26 +20,49 @@
         return $wp_hasher->CheckPassword($password, $stored_hash);
   }
 
+  function check_login_details($username, $password){
+    // checks if both username and password match user in database. if so, returns user details.
+    // returning false will not specify which of the username or password is incorrect for security reasons
+    global $dbconnect;
+
+    // protect against injections
+    $username = mysqli_real_escape_string($dbconnect, $username);
+    // find user with same username
+    $sql = "SELECT * FROM wp_users WHERE user_login='$username'";
+    $result = mysqli_query($dbconnect, $sql);
+
+    // if such a user exists continue, else return error
+    if(mysqli_num_rows($result) > 0) {
+        $user_aa = mysqli_fetch_assoc($result);
+        $stored_hash = $user_aa['user_pass'];
+        // check password
+        if (wp_check_password($password, $stored_hash)){
+          return $user_aa;
+        }
+        else{
+          return False;
+        }
+    } else {
+        return False;
+    }
+  }
+
   // get login details from post array from login.php form
-  $username = $_POST['username'];
-  $password = $_POST['password'];
+  if (!empty($_POST)){
+    if ( isset( $_POST['username'] ) && isset( $_POST['password'] ) ) {
+      $username = $_POST['username'];
+      $password = $_POST['password'];
+    }
 
-  // find user with same username, get stored hash to comapre to password
-  $sql = "SELECT * FROM wp_users WHERE user_login='$username'";
-  $query = mysqli_query($dbconnect, $sql);
-  $result = mysqli_fetch_assoc($query);
-  $stored_hash = $result['user_pass'];
+  }
 
-
-  // check password
-  if (wp_check_password($password, $stored_hash)){
-    echo 'Correct password!';
+  if (!check_login_details($username, $password)){
+    echo 'username or password incorrect';
   }
   else{
-    echo "incorrect password :(";
+    echo 'login successful!';
   }
 
 
 
-
- ?>
+?>

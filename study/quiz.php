@@ -57,7 +57,7 @@
       // -------------------------------------------------
       //                DISPLAY QUIZ QUESTIONs
       // -------------------------------------------------
-	  
+
       $question_id = $aa['question_id'];
       $question_settings = unserialize($aa['question_settings']);
       echo $question_settings['question_title'];
@@ -73,9 +73,9 @@
 
       // multichoice OR a description thing
       if ($question_type == 0 or $question_type == 1){
-        // descriptions are for some reason called
+        // descriptions are for some reason stored in question_name
         if(empty($answer_array)){
-          echo $aa['question_name'];
+          echo html_entity_decode($aa['question_name']);
         }
         else{
         // display mutlichoice options
