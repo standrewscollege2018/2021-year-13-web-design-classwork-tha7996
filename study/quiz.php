@@ -30,7 +30,6 @@
      $question_ids = $qpages[0]['questions'];
      // contians question ids. get questions using these, and pass each into display_question function
      foreach ($question_ids as $question_id ) {
-       echo "qpages";
        $sql = "SELECT * FROM wp_mlw_questions WHERE question_id=$question_id";
        $questions = mysqli_query($dbconnect, $sql);
        $aa = mysqli_fetch_assoc($questions);
@@ -58,7 +57,7 @@
       // -------------------------------------------------
       //                DISPLAY QUIZ QUESTIONs
       // -------------------------------------------------
-
+	  
       $question_id = $aa['question_id'];
       $question_settings = unserialize($aa['question_settings']);
       echo $question_settings['question_title'];
@@ -73,7 +72,7 @@
       // display question depending on question type
 
       // multichoice OR a description thing
-      if ($question_type == 0){
+      if ($question_type == 0 or $question_type == 1){
         // descriptions are for some reason called
         if(empty($answer_array)){
           echo $aa['question_name'];

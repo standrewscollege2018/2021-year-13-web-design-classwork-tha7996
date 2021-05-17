@@ -5,8 +5,8 @@ if(isset($_SESSION['admin'])) {
   // Already logged in, redirect to the admin panel
   header("Location: index.php?page=adminpanel");
 }
+?>
 
- ?>
 <!-- The login form goes here -->
 <!-- Notice that the form goes to verify.php, which is a standalone page, not within index.php -->
 <form action="verify.php" method="post">
