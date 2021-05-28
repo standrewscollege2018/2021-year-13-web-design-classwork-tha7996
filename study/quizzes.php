@@ -1,5 +1,8 @@
 <h1>Quizzes</h1>
 <?php
+
+  include('dbconnect.php');
+
   $sql = "SELECT * FROM wp_mlw_quizzes";
   $qry = mysqli_query($dbconnect, $sql);
   $aa = mysqli_fetch_assoc($qry);

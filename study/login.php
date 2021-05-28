@@ -20,8 +20,6 @@ if(isset($_GET['error'])){
   }
 }
 
-$dbconnect->close();
-
 ?>
 
 <!-- The login form goes here -->
