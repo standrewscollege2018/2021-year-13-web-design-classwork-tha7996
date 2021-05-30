@@ -9,9 +9,15 @@
     <?php
 
       if(!isset($_SESSION['user_ID'])){
+
         echo "<a style='text-decoration:none; color:white;' href='index.php?page=login'>Login</a>";
       }
       else{
+
+        $account_type = ucfirst($_SESSION['user_type']);
+
+        echo "<a style='text-decoration:none; color:white;' href='index.php?page=portal'>$account_type Portal</a>";
+
         echo "<a style='text-decoration:none; color:white;' href='index.php?page=account'>Account</a>";
       }
 

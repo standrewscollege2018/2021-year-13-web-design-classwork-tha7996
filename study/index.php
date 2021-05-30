@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 
-<?php
-  include('dbconnect.php');
- ?>
+
 
 <html lang="en">
   <head>
