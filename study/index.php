@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 
 
-
 <html lang="en">
   <head>
     <meta charset="UTF-8">
@@ -34,7 +33,7 @@
 
       session_start();
 
-      
+
       if (isset($_GET['page'])) {
         if ($_GET['page']!='login' && $_GET['page']!='logout' && !isset($_SESSION['user_ID'])){
             header('Location: index.php?page=login&error=loggedout');

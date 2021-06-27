@@ -107,6 +107,7 @@ function create_quiz_results(){
     $question_number += 1;
   }
 
+  $question_number += 1;
   array_push($quiz_results, $all_answer_arrays);
 
   $rest_of_it = array(2=>'','contact'=>array(),'timer_ms'=>1,'pagetime'=>array(),'hidden_questions'=>NULL,'total_possible_points'=>0,'total_attempted_questions'=>$question_number);
