@@ -1,4 +1,4 @@
-<div class="container quizzes-navbar">
+<div class="container-fluid quizzes-navbar">
   <div class="row">
     <h3 class='col-1'><a href="index.php?page=home"><</a></h3>
     <h3 class='col'>Quizzes</h3>

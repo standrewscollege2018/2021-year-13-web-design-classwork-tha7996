@@ -91,8 +91,8 @@ else{
 
        ?>
 
-       <!-- navbar for quiz -->
-       <div class="container quiz-navbar">
+       <!-- navbar for quiz. This is created so low down as quiz name is needed.-->
+       <div class="container-fluid quiz-navbar">
          <div class="row">
            <a href="index.php?page=quizzes&questions=<?php echo $_GET['category']; ?>"><h3 class='col-1'><</h3></a>
            <h3 class='col'><?php echo $quiz_name ?></h3>

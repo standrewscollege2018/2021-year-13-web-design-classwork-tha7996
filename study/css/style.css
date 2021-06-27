@@ -84,7 +84,7 @@ form{
 }
 
 /* QUIZ SELECTION PAGE */
-.quizzes-navbar, .account-navbar{
+.quizzes-navbar, .account-navbar {
   background-color: rgb(245,136,122);
   color: black;
   text-align: center;
@@ -96,7 +96,7 @@ form{
 .quizzes-navbar a, .account-navbar a{
   padding: 0px;
 }
-.quizzes-navbar a:hover, .account-navbar a:hover{
+.quizzes-navbar a:hover, .account-navbar a:hover, .quiz-navbar a:hover{
   text-decoration: none;
   color: color: rgb(75,65,63);
 }
