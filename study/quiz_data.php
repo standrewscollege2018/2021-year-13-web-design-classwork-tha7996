@@ -1,7 +1,4 @@
 <?php
-
-
-
 // these are the quiz ids of each question set
 // hese are used to:
 // 1. display a specific set in the 'quizzes' page
@@ -16,6 +13,4 @@ define("PARENT_END_QUIZ_IDS", [11,47,51]);
 // this used in quiz.php, to check whether user has right permissions to access data
 define("TEEN_QUIZZES", array_merge(TEEN_BASELINE_QUIZ_IDS, TEEN_WEEKLY_QUIZ_IDS, TEEN_END_QUIZ_IDS));
 define("PARENT_QUIZZES", array_merge(PARENT_BASELINE_QUIZ_IDS, PARENT_WEEKLY_QUIZ_IDS, PARENT_END_QUIZ_IDS));
-
-
  ?>
