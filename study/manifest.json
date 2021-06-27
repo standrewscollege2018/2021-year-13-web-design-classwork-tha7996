@@ -47,5 +47,8 @@
       "type": "image/png",
       "sizes": "512x512"
     }
-  ]
+  ],
+
+  "name": "Taiora",
+  "gcm_sender_id": "15218429496"
 }

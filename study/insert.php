@@ -71,7 +71,7 @@ function create_quiz_results(){
   $all_answer_arrays = array();
 
   // keeps track of question
-  $question_number=0;
+  $question_number=1;
   // loops through post array answers
   // post array has hidden inputs for each question.
   // These inputs contain the question type (according to QSM) and are in the form 'type[question number]'
@@ -91,7 +91,7 @@ function create_quiz_results(){
       1 => "$question_answer",
       2 => '',
       3 => '',
-      'correct' => 'incorrect',
+      'correct' => 'correct',
       // question id. will leave for now.
       'id' => "$question_id",
       'points' => 0,
@@ -107,7 +107,6 @@ function create_quiz_results(){
     $question_number += 1;
   }
 
-  $question_number += 1;
   array_push($quiz_results, $all_answer_arrays);
 
   $rest_of_it = array(2=>'','contact'=>array(),'timer_ms'=>1,'pagetime'=>array(),'hidden_questions'=>NULL,'total_possible_points'=>0,'total_attempted_questions'=>$question_number);
@@ -117,6 +116,7 @@ function create_quiz_results(){
 
   return serialize($quiz_results);
 }
+
 
 
 main();

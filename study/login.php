@@ -1,4 +1,13 @@
 <!-- This is the login page, where the user can enter their username and password -->
+
+<div class="container home-navbar">
+  <div class="row">
+    <h3 class='col'>Taiora Trial</h3>
+  </div>
+</div>
+
+<div class="login-container">
+
 <?php
 // Check to see if user is logged in
 if(isset($_SESSION['admin'])) {
@@ -35,3 +44,5 @@ if(isset($_GET['error'])){
   </div>
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
+
+</div>

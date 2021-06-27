@@ -5,6 +5,8 @@
   box-sizing: border-box;
 }
 
+
+background-color: rgb(245,136,122);
 body {
   background: #fdfdfd;
   font-family: "Nunito", sans-serif;
@@ -44,4 +46,90 @@ h1 {
 
 form{
   padding:30px;
+}
+/* HOME PAGE */
+.home-navbar{
+  background-color: rgb(245,136,122);
+  color: black;
+  text-align: center;
+  padding: 10px 20px;
+}
+.home-navbar h3{
+  padding: 0px;
+}
+.home-account-container{
+  text-align: center;
+  margin: 0px 0px 7px 0px;
+  border-radius: 0px 0px 20px 20px;
+  padding: 5px;
+  background-color: rgb(245,136,122);
+}
+.home-button{
+  color: white;
+  background-color: black;
+  border-radius: 30px;
+  padding: 10px 30px;
+  font-weight: bold;
+  margin: 10px;
+}
+.home-button:hover{
+  background-color: rgb(75,65,63);
+}
+.home-content-container{
+  text-align: center;
+}
+.home-content-container h2{
+  color: rgb(75,65,63);
+  font-weight: bold;
+}
+
+/* QUIZ SELECTION PAGE */
+.quizzes-navbar, .account-navbar{
+  background-color: rgb(245,136,122);
+  color: black;
+  text-align: center;
+  padding: 10px 20px;
+}
+.quizzes-navbar h3{
+  padding: 0px;
+}
+.quizzes-navbar a, .account-navbar a{
+  padding: 0px;
+}
+.quizzes-navbar a:hover, .account-navbar a:hover{
+  text-decoration: none;
+  color: color: rgb(75,65,63);
+}
+
+/* QUIZ PAGE */
+.quiz-navbar{
+  background-color: rgb(232,232,232);
+  color: black;
+  text-align: center;
+  padding: 10px 20px;
+}
+.quiz-container{
+  background-color: rgb(232,232,232);
+}
+.quiz-container h3{
+  padding: 7px;
+  color: black;
+}
+
+/* ACCOUNT PAGE */
+.account-content-container{
+  padding-top: 10px;
+  text-align: center;
+}
+.account-content-container img{
+  max-width: 100px;
+  margin: 15px;
+}
+.account-content-container a{
+  color: rgb(17,104,214);
+}
+
+.login-container{
+  text-align: center;
+  padding: 10px;
 }

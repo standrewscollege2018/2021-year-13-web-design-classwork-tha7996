@@ -1,40 +1,55 @@
-<h1>Quizzes</h1>
+<div class="container quizzes-navbar">
+  <div class="row">
+    <h3 class='col-1'><a href="index.php?page=home"><</a></h3>
+    <h3 class='col'>Quizzes</h3>
+    <!-- this centers the middle column -->
+    <h3 class='col-1'></h3>
+  </div>
+</div>
+
+
+
+
 <?php
 
-include('dbconnect.php');
+// quiz data contains some array constants which each have the quiz ids for the set of quizzes
+include('quiz_data.php');
 
-$TEEN_BASELINE_QUIZ_IDS = [5,8,12,13,15,21,23,26,27,29,48];
-$TEEN_WEEKLY_QUIZ_IDS = [25,30,31,37,40,43,49];
-$TEEN_END_QUIZ_IDS = [9,17,32,33,34,35,36,38,41,42,44,50];
+$category=$_GET['questions'];
 
-define("PARENT_BASELINE_QUIZ_IDS", [7,14,16,22,28,39,52]);
-define("PARENT_WEEKLY_QUIZ_IDS", [24]);
-define("PARENT_END_QUIZ_IDS", [11,47,51]);
+// prepare the constant name. This produces a string resembling the form [USER_TYPE]_[CATEGORY]_QUIZ_IDS
+// this should match one of the constants in quiz_data
+$quizzes_to_select = strtoupper($_SESSION['user_type']).'_'.strtoupper($category).'_QUIZ_IDS';
 
-$account_type = strtoupper($_GET['account']);
-$questions = strtoupper($_GET['questions']);
-$questions_to_select = $account_type.'_'.$questions.'_QUIZ_IDS';
+// if it doesn't match, throw error. This can only occur if the category in the get array does not exist,
+// as the user type is selected from the session array
+if(!defined($quizzes_to_select)){
+  echo "Sorry! No quizzes found!";
+}
+else{
 
-$questions_to_select = $$questions_to_select;
+  include('dbconnect.php');
 
-var_dump($questions_to_select);
+  // get questions using array
+  $sql = "SELECT * FROM wp_mlw_quizzes WHERE quiz_id IN ".'('.implode(',', constant($quizzes_to_select)) . ')';
+  $qry = mysqli_query($dbconnect, $sql);
 
-$sql = "SELECT * FROM wp_mlw_quizzes WHERE 'quiz_id' IN $questions_to_select";
-$qry = mysqli_query($dbconnect, $sql);
-$aa = mysqli_fetch_assoc($qry);
+  echo "<div class='quizzes-list'";
 
-echo "<div class='quizzes-list'";
+  // echo links of all quizzes.
+  while ($aa = mysqli_fetch_assoc($qry)) {
+    $quiz_name = $aa['quiz_name'];
+    $quiz_id = $aa['quiz_id'];
 
-do {
-  $quiz_name = $aa['quiz_name'];
-  $quiz_id = $aa['quiz_id'];
+    echo "<p><a href='index.php?page=quiz&quiz_id=$quiz_id&category=$category'>$quiz_name</a></p>";
 
-  echo "<p><a href='index.php?page=quiz&quiz_id=$quiz_id'>$quiz_name</a></p>";
+  }
+  echo "</div>";
 
-} while ($aa = mysqli_fetch_assoc($qry));
+  $dbconnect->close();
 
-echo "</div>";
+}
 
-$dbconnect->close();
+
 
  ?>

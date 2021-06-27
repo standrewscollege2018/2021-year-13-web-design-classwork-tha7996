@@ -1,10 +1,7 @@
 <!-- navbar -->
-
 <nav style="background-color:red; padding: 10px 30px;">
   <h1 style="color:white;">Taiora Trial</h1>
   <div class="links">
-
-    <a style="text-decoration:none; color:white;" href="index.php?page=quizzes">Quizzes</a>
 
     <?php
 
@@ -22,8 +19,6 @@
       }
 
      ?>
-
-
 
   </div>
 </nav>

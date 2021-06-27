@@ -1,18 +1,19 @@
+<!-- this portal page contains links to quiz categories for teens or parents -->
 
-<?php
+<div class="container page-navbar">
+  <div class="row">
+    <h3 class='col-1'><a href="index.php?page=home"><</a></h3>
+    <h3 class='col'><?php echo ucfirst($_SESSION['user_type'])?> Portal</h3>
+    <!-- this centers the middle column -->
+    <h3 class='col-1'></h3>
+  </div>
+</div>
 
-$account_type = $_SESSION['user_type'];
+<div class="container-fluid quiz-category-container">
 
-// capitalize first letter
-echo "<h2>",ucfirst($account_type)," Participant Portal</h2>";
-echo "<br><h3>Questionaires</h3>";
+  <h2>Questionnaires</h2>
 
-echo "<a href='index.php?page=quizzes&account=$account_type&questions=baseline'>Welcome/Baseline</a><br>";
-echo "<a href='index.php?page=quizzes&questions=$account_type&questions=weekly'>Weekly</a><br>";
-echo "<a href='index.php?page=quizzes&questions=$account_type&questions=end'>End of Trial</a><br>";
-
-
-
-
-
- ?>
+  <a href='index.php?page=quizzes&questions=baseline'><button type="button" class="btn quiz-category-btn">Welcome/Baseline</button></a><br>
+  <a href='index.php?page=quizzes&questions=weekly'><button type="button" class="btn quiz-category-btn">Weekly</button></a><br>
+  <a href='index.php?page=quizzes&questions=end'><button type="button" class="btn quiz-category-btn">End of Trial</button></a><br>
+</div>
