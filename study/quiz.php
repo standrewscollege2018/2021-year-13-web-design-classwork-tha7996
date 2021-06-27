@@ -94,7 +94,6 @@ else{
        <!-- navbar for quiz -->
        <div class="container quiz-navbar">
          <div class="row">
-           <button></button>
            <a href="index.php?page=quizzes&questions=<?php echo $_GET['category']; ?>"><h3 class='col-1'><</h3></a>
            <h3 class='col'><?php echo $quiz_name ?></h3>
            <!-- this centers the middle column -->
