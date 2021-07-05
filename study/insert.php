@@ -49,7 +49,17 @@ function main(){
     //  Set the parameters values and execute
     mysqli_stmt_execute($stmt);
 
-    echo "Records inserted successfully.";
+    // record has been inserted.
+    // if quiz last in category, show success message, else redirect to next quiz
+    if ($quiz_id==end($_SESSION['quizzes'])) {
+      echo "All quizzes inserted successfully!";
+    }
+    else{
+      $next_quiz=$_SESSION['quizzes'][array_search($quiz_id, $_SESSION['quizzes'])+1];
+      header("Location: index.php?page=quiz&quiz_id=$next_quiz");
+
+    }
+
 
   } else{
       echo "ERROR: Could not prepare query: $sql. " . mysqli_error($dbconnect);

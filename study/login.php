@@ -1,9 +1,7 @@
 <!-- This is the login page, where the user can enter their username and password -->
 
-<div class="container home-navbar">
-  <div class="row">
+<div class="container-fluid home-navbar">
     <h3 class='col'>Taiora Trial</h3>
-  </div>
 </div>
 
 <div class="login-container">
@@ -40,9 +38,23 @@ if(isset($_GET['error'])){
       </div>
   <div class="form-group">
     <label for="password">Password</label>
-    <input name="password" type="password" class="form-control" placeholder="Password" required>
+    <input name="password" id='password' type="password" class="form-control" placeholder="Password" required>
+
+    <!-- element to toggle between password visibility -->
+    <input class='show-password-button' type="checkbox" onclick="showPassword()">Show Password</input>
   </div>
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
+
+<script type="text/javascript">
+  function showPassword() {
+    var x = document.getElementById("password");
+    if (x.type === "password") {
+      x.type = "text";
+    } else {
+      x.type = "password";
+    }
+  }
+</script>
 
 </div>

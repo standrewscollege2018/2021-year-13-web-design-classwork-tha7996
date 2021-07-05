@@ -7,6 +7,7 @@ define("HORI_MULTI_CHOICE_QTYPE", 1);
 define("SHORT_ANSWER_QTYPE", 3);
 define("NUMBER_QTYPE", 1);
 
+
 function display_question($aa, $question_number){
 
   // -------------------------------------------------
@@ -59,6 +60,7 @@ function display_question($aa, $question_number){
 
   echo "<br/>";
 }
+
 
 $quiz_id = $_GET['quiz_id'];
 
@@ -139,7 +141,15 @@ else{
         }
        }
 
-       echo "<input type='submit'>";
+       // if this is the last quiz in the category, show 'SUBMIT' button
+       if ($quiz_id==end($_SESSION['quizzes'])) {
+         echo "<button class='quiz-next-button' type='submit'>SUBMIT</button>";
+       }
+       // else show 'next' button
+       else{
+         echo "<button class='quiz-next-button' type='submit'>NEXT</button>";
+       }
+
        echo("</form>");
     }
   }

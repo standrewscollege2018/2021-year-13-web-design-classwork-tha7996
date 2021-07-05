@@ -1,15 +1,4 @@
-<div class="container-fluid quizzes-navbar">
-  <div class="row">
-    <h3 class='col-1'><a href="index.php?page=home"><</a></h3>
-    <h3 class='col'>Quizzes</h3>
-    <!-- this centers the middle column -->
-    <h3 class='col-1'></h3>
-  </div>
-</div>
-
-
-
-
+<!-- this page redirects to first quiz of select category, and sets category quizzes in session -->
 <?php
 
 // quiz data contains some array constants which each have the quiz ids for the set of quizzes
@@ -24,32 +13,15 @@ $quizzes_to_select = strtoupper($_SESSION['user_type']).'_'.strtoupper($category
 // if it doesn't match, throw error. This can only occur if the category in the get array does not exist,
 // as the user type is selected from the session array
 if(!defined($quizzes_to_select)){
-  echo "Sorry! No quizzes found!";
+  header('Location: index.php?page=home');
 }
 else{
 
-  include('dbconnect.php');
+  $_SESSION['quizzes']=constant($quizzes_to_select);
+  $first_quiz=$_SESSION['quizzes'][0];
 
-  // get questions using array
-  $sql = "SELECT * FROM wp_mlw_quizzes WHERE quiz_id IN ".'('.implode(',', constant($quizzes_to_select)) . ')';
-  $qry = mysqli_query($dbconnect, $sql);
-
-  echo "<div class='quizzes-list'";
-
-  // echo links of all quizzes.
-  while ($aa = mysqli_fetch_assoc($qry)) {
-    $quiz_name = $aa['quiz_name'];
-    $quiz_id = $aa['quiz_id'];
-
-    echo "<p><a href='index.php?page=quiz&quiz_id=$quiz_id&category=$category'>$quiz_name</a></p>";
-
-  }
-  echo "</div>";
-
-  $dbconnect->close();
+  header("Location: index.php?page=quiz&quiz_id=$first_quiz&category=$category");
 
 }
 
-
-
- ?>
+?>

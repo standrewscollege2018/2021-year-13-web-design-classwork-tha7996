@@ -10,7 +10,7 @@ $name = $_SESSION['user_name'];
 </div>
 
 <div class="home-account-container">
-  <h2>Welcome <?php echo $name ?></h2>
+  <h2>Welcome, <?php echo $name ?></h2>
   <a href='index.php?page=account'><button type="button" class="btn home-button">Manage Account</button></a><br>
 </div>
 
