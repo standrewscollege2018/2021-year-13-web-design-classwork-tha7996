@@ -1,7 +1,9 @@
 <!-- This is the login page, where the user can enter their username and password -->
 
 <div class="container-fluid home-navbar">
+  <div class="row">
     <h3 class='col'>Taiora Trial</h3>
+  </div>
 </div>
 
 <div class="login-container">

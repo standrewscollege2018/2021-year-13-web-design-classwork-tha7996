@@ -1,0 +1,17 @@
+{
+  "name": "noti",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "jose": "^3.14.3",
+    "web-push": "^3.4.5"
+  }
+}
