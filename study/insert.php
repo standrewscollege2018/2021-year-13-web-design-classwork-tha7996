@@ -32,7 +32,7 @@ function main(){
   $unique_id = '7160c57f21b31291af8fe8aaa0128f96';
   $form_type = '1';
 
-  // prepare sql statement. EOD used to keep IDE colouring consistent (was breaking with long line)
+  // prepare sql statement. EOD used to make readable
   $sql = <<<EOD
   INSERT INTO `wp_mlw_results` (`quiz_id`, `quiz_name`, `quiz_system`, `point_score`,
   `correct_score`, `correct`, `total`, `name`, `business`, `email`, `phone`, `user`,

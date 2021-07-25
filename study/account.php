@@ -14,3 +14,21 @@
   <p>To view or edit your profile details (including your password), please navigate to our website.</p>
   <a href="index.php?page=logout">Logout</a>
 </div>
+
+
+<!-- contains button to enable/disable push notifications -->
+<!-- functionality handled in js/main.js -->
+
+<div class="notifications-switch-container">
+  <button disabled class="notifications-switch">Enable Push Notifications</button><br><br>
+</div>
+
+<!-- dispaly subscription object for testing -->
+<section class="js-sub-endpoint" style="display:none;width:80%">
+  <h3>Subscription Object:</h3>
+  <code class="js-subscription-json"></code><br><br><br>
+  <h3>Endpoint URL:</h3>
+  <code class="js-endpoint-url"></code>
+</section>
+
+<script src="js/notifications.js"></script>

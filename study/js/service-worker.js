@@ -31,6 +31,15 @@ self.addEventListener("fetch", fetchEvent => {
   );
 });
 
+
+// notification closed. does nothing except add to console.
+self.addEventListener('notificationclose', event => {
+  const notification = event.notification;
+  const primaryKey = notification.data.primaryKey;
+
+  console.log('Closed notification: ' + primaryKey);
+});
+
 // when user clicks notification,
 self.addEventListener('notificationclick', function(e) {
   var notification = e.notification;
@@ -46,16 +55,20 @@ self.addEventListener('notificationclick', function(e) {
 
 });
 
-// ------------
-//  PUSH notifications
-// --------------
-
-// subscirbe user to push service
-
-
+// recieve PUSH event and thus deliver notification
 self.addEventListener("push", function(e) {
+
+  let body;
+
+  // if there is a payload, assign this to body, else default
+  if (event.data) {
+    body = event.data.text();
+  } else {
+    body = 'Default body';
+  }
+
   var options = {
-    body: 'This notification was generated from a push!',
+    body: body,
     icon: 'images/coffee1.jpg',
     vibrate: [100, 50, 100],
     data: {

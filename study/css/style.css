@@ -150,3 +150,13 @@ form{
   background-color: rgb(60, 139, 190);
   cursor: pointer;
 }
+
+.notifications-switch-container{
+  text-align: center;
+
+}
+.notifications-switch-container button{
+  padding: 10px 15px;
+  margin: 10px;
+  border-radius: 10px;
+}
