@@ -59,7 +59,6 @@ function get_user_type($user_id){
   // stored in serialized array, as users can have mutiple capabilities
   $user_capabilities = unserialize(mysqli_fetch_assoc($result)['meta_value']);
 
-  var_dump($result);
 
   if(array_key_exists("teen", $user_capabilities)){
     return('teen');

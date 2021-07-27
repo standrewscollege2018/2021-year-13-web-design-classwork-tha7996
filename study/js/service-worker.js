@@ -1,9 +1,9 @@
-const staticDevCoffee = "dev-coffee-site-v1";
+const staticTaiora = "taiora-trial-pwa-v1";
 const assets = [
   "/",
   "/index.html",
   "/css/style.css",
-  "/js/app.js",
+  "/js/main.js",
   "/images/coffee1.jpg",
   "/images/coffee2.jpg",
   "/images/coffee3.jpg",
@@ -14,10 +14,11 @@ const assets = [
   "/images/coffee8.jpg",
   "/images/coffee9.jpg"
 ];
+
 // install pwa
 self.addEventListener("install", installEvent => {
   installEvent.waitUntil(
-    caches.open(staticDevCoffee).then(cache => {
+    caches.open(staticTaiora).then(cache => {
       cache.addAll(assets);
     })
   );
