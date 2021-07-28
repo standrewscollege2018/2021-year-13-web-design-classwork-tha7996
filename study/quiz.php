@@ -86,7 +86,7 @@ else{
      while($quiz_aa = mysqli_fetch_assoc($quiz_result)) {
 
        // unserilize no.1 : quiz settings
-       $quiz_settings = unserialize($quiz_aa['quiz_settings']);
+       $quiz_settings = @unserialize($quiz_aa['quiz_settings']);
 
        // get quiz name
        $quiz_name = $quiz_aa['quiz_name'];

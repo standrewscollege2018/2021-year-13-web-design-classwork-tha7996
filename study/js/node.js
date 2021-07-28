@@ -6,7 +6,7 @@ const vapidPublicKey = 'BDD_zKtxaL_P25T2C7AjeenIND2VabW2qBn6tsHyib3-ICZLZ1ovxh5I
 const vapidPrivateKey = '0IqLNVKDgPSNz8sHL9eDGQguPnYqolZzIEJCyX2xUJY';
 
 // subscription object
-const pushSubscription = {"endpoint":"https://updates.push.services.mozilla.com/wpush/v2/gAAAAABg_LwUfDksHLXutJKzOaNTuwmiBhNiHvhACIc1nY6GASDi2v7M5YTCtZB2hSYCf1tXaJzx_LdDgSthqwj7hzE9CcqQrdUgHMLzFERtC0JzlzcQYDuSPJtXpT9YcR4pQeAVK8edzLcNNUJVq2Ksq3oRvJwq5F9GvSbpEGMOVYv_CLgS5Y0","keys":{"auth":"QDyZ08eMaAWsnrYaQ1og7A","p256dh":"BPYmDHq2CiaUpK-Cdf67P9AscYMekJnf_QVtoXLD-NN2H9vBe4HIfrnY0mHSZXuz9wmNjozitIogcE3WkkTN0AA"}}
+const pushSubscription = {"endpoint":"https://fcm.googleapis.com/fcm/send/egg0epfYTL0:APA91bGvNezIYJsuJIzkyeyHSKL33z3ixHKgFcOlF6lCooe0nvIULk-HCGZXwvVC5UUTDE6qkY9SS6jJ_bWi3Dbczn0QeOX9FMiMWiK-XdtgRqUfVxW9sohU_4rZ7HmY9w_0QN1acThY","expirationTime":null,"keys":{"p256dh":"BBihHvkpwVGtU6abPaBwBY-NfU8CmaRTi5ZS7yBvX0gpxvodmeM3r2EDS4CiM9Nn3qQWZVcwsnd4wNjf4UqcbkI","auth":"LkJDbfOgN6vRoZ-rs3T6lA"}}
 
 const payload = 'Here is a payload!';
 

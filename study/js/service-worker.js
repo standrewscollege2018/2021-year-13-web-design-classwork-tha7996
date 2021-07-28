@@ -1,7 +1,7 @@
 const staticTaiora = "taiora-trial-pwa-v1";
 const assets = [
   "/",
-  "/index.html",
+  "/index.php",
   "/css/style.css",
   "/js/main.js",
   "/images/coffee1.jpg",
@@ -61,12 +61,14 @@ self.addEventListener("push", function(e) {
 
   let body;
 
+  console.log('Push recieved');
+
   // if there is a payload, assign this to body, else default
-  if (event.data) {
-    body = event.data.text();
-  } else {
-    body = 'Default body';
-  }
+  // if (event.data) {
+  //   body = event.data.text();
+  // } else {
+  //   body = 'Default body';
+  // }
 
   var options = {
     body: body,
