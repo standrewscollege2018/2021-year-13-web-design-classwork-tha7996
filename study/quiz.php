@@ -63,6 +63,7 @@ function display_question($aa, $question_number){
 
 
 $quiz_id = $_GET['quiz_id'];
+$quizzes_category = $_GET['category'];
 
 
 include('quiz_data.php');
@@ -108,7 +109,7 @@ else{
         <?php
 
        // form for question
-       echo("<form action='index.php?page=insert&quiz_id=$quiz_id&quiz_name=$quiz_name' method='post'>");
+       echo("<form action='index.php?page=insert&quiz_id=$quiz_id&quiz_name=$quiz_name&category=$quizzes_category' method='post'>");
 
        // will keep track of question
        $question_number = 0;
@@ -123,6 +124,7 @@ else{
         $question_ids = $qpages[0]['questions'];
         // contians question ids. get questions using these, and pass each into display_question function
         foreach ($question_ids as $question_id ) {
+
           $sql = "SELECT * FROM wp_mlw_questions WHERE question_id=$question_id";
           $questions = mysqli_query($dbconnect, $sql);
           $aa = mysqli_fetch_assoc($questions);

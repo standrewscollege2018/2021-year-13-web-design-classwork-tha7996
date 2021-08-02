@@ -3,6 +3,8 @@
 <?php
 include('dbconnect.php');
 
+$quizzes_category=$_GET['category'];
+
 function main(){
   // creates values for fields needed, creates sql statement and inserts into database.
   global $dbconnect;
@@ -56,7 +58,7 @@ function main(){
     }
     else{
       $next_quiz=$_SESSION['quizzes'][array_search($quiz_id, $_SESSION['quizzes'])+1];
-      header("Location: index.php?page=quiz&quiz_id=$next_quiz");
+      header("Location: index.php?page=quiz&quiz_id=$next_quiz&category=$quizzes_category");
 
     }
 
