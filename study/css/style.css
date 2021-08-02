@@ -164,3 +164,21 @@ form{
   margin: 10px;
   border-radius: 10px;
 }
+
+.landing-page{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background-color: rgb(245,136,122);
+  text-align: center;
+  padding: 10px;
+}
+.landing-page h1{
+  color: black;
+}
+.install-button{
+  padding: 10px;
+  border-radius:10px;
+}

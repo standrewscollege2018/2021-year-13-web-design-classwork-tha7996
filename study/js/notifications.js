@@ -198,7 +198,7 @@ if ('serviceWorker' in navigator) {
     console.log('Service Worker and Push supported');
 
 
-    navigator.serviceWorker.register('js/service-worker.js')
+    navigator.serviceWorker.register('service-worker.js')
     .then(swReg => {
       console.log('Service Worker registered!', swReg);
 

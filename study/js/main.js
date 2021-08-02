@@ -42,7 +42,7 @@ const coffees = [
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
 
-    navigator.serviceWorker.register('js/service-worker.js')
+    navigator.serviceWorker.register('service-worker.js')
     .then(swReg => {
       console.log('Service Worker registered!', swReg);
 
@@ -95,6 +95,11 @@ function showInstallPromotion(){
     deferredPrompt = null;
 
   });
+}
+
+function hideInstallPromotion(){
+  console.log('PWA installed');
+  location.reload();
 }
 
 

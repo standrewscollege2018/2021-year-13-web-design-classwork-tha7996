@@ -1,4 +1,4 @@
-const staticTaiora = "taiora-trial-pwa-v1";
+var staticTaiora = "taiora-trial-pwa-v1";
 const assets = [
   "/",
   "/index.php",
@@ -19,11 +19,10 @@ const assets = [
 self.addEventListener("install", installEvent => {
   installEvent.waitUntil(
     caches.open(staticTaiora).then(cache => {
-      cache.addAll(assets);
+      cache.addAll(assets)
     })
   );
 });
-
 self.addEventListener("fetch", fetchEvent => {
   fetchEvent.respondWith(
     caches.match(fetchEvent.request).then(res => {

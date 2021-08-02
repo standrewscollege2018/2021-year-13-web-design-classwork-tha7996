@@ -2,11 +2,16 @@
 <?php
 
 $mode=$_GET['app'];
+session_start();
 
     if ($mode=='browser') {
-      ?>
-      <button class="install-button" name="button">Install!</button>
-      <?php
+      $_SESSION["app"]=False;
+    }
+    else{
+
+      $_SESSION["app"]=True;
+
+
     }
 
  ?>
