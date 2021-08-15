@@ -66,6 +66,8 @@ function initializeUI() {
       console.log('User is NOT subscribed.');
     }
 
+    console.log(subscription);
+
     updateSubscriptionButton();
   });
 }

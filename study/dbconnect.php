@@ -1,3 +1,3 @@
 <?php
-  $dbconnect = mysqli_connect("localhost", "root", "", "wordpress2");
+  $dbconnect = mysqli_connect("localhost", "root", "", "wordpress3");
 ?>

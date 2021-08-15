@@ -9,12 +9,12 @@ define("NUMBER_QTYPE", 1);
 
 
 function display_question($aa, $question_number){
-
   // -------------------------------------------------
   //                DISPLAY A QUIZ QUESTIONs
   // -------------------------------------------------
 
   $question_id = $aa['question_id'];
+  echo $question_id;
   $question_settings = unserialize($aa['question_settings']);
   echo $question_settings['question_title'];
   echo "<br>";
@@ -87,7 +87,8 @@ else{
      while($quiz_aa = mysqli_fetch_assoc($quiz_result)) {
 
        // unserilize no.1 : quiz settings
-       $quiz_settings = @unserialize($quiz_aa['quiz_settings']);
+       $quiz_settings = unserialize($quiz_aa['quiz_settings']);
+       var_dump($quiz_settings);
 
        // get quiz name
        $quiz_name = $quiz_aa['quiz_name'];
@@ -120,6 +121,8 @@ else{
        // 2. if the order is changed, another array $qpages is created in the quiz_settings field, containing the questions
        // thus we have to first check if qpages exists so we can get questions in correct order
        if(isset($quiz_settings['qpages'])){
+
+
         $qpages = unserialize($quiz_settings['qpages']);
         $question_ids = $qpages[0]['questions'];
         // contians question ids. get questions using these, and pass each into display_question function

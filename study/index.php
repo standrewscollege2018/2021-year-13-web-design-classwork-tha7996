@@ -28,15 +28,17 @@
   </head>
   <body>
 
-  <body onload='getPWADisplayMode()'>
+  <!-- <body onload='getPWADisplayMode()'>
 
     <div id='demo'>
-    </div>
+    </div> -->
 
   <?php
 
 
         session_start();
+
+        $_SESSION['app']=True;
 
         if ($_SESSION['app']==True) {
 
