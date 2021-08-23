@@ -11,6 +11,6 @@
 
   <p>This app has been developed with the primary purpose of enabling easy access to fill out the Taiora Trial's surveys.</p>
   <p>This app does not hold any other information regarding trial information, updates or referrals.</p>
-  <p>To see this information, please navigate to our website<a href="" style="display: inline;">here</a></p>
+  <p>To see this information, or to contact us, please navigate to our website<a href="taioratrial.net" style="display: inline;">here</a></p>
 
 </div>

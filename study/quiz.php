@@ -14,7 +14,6 @@ function display_question($aa, $question_number){
   // -------------------------------------------------
 
   $question_id = $aa['question_id'];
-  echo $question_id;
   $question_settings = unserialize($aa['question_settings']);
   echo $question_settings['question_title'];
   echo "<br>";
@@ -87,8 +86,8 @@ else{
      while($quiz_aa = mysqli_fetch_assoc($quiz_result)) {
 
        // unserilize no.1 : quiz settings
-       $quiz_settings = unserialize($quiz_aa['quiz_settings']);
-       var_dump($quiz_settings);
+       $quiz_settings = @unserialize($quiz_aa['quiz_settings']);
+
 
        // get quiz name
        $quiz_name = $quiz_aa['quiz_name'];
@@ -98,10 +97,10 @@ else{
        <!-- navbar for quiz. This is created so low down as quiz name is needed.-->
        <div class="container-fluid quiz-navbar">
          <div class="row">
-           <a href="index.php?page=quizzes&questions=<?php echo $_GET['category']; ?>"><h3 class='col-1'><</h3></a>
+           <!-- <a href="index.php?page=quizzes&questions=<?php echo $_GET['category']; ?>"><h3 class='col-1'><</h3></a> -->
            <h3 class='col'><?php echo $quiz_name ?></h3>
            <!-- this centers the middle column -->
-           <h3 class='col-1'></h3>
+           <!-- <h3 class='col-1'></h3> -->
          </div>
        </div>
 

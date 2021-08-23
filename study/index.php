@@ -28,10 +28,10 @@
   </head>
   <body>
 
-  <!-- <body onload='getPWADisplayMode()'>
+  <body onload='getPWADisplayMode()'>
 
     <div id='demo'>
-    </div> -->
+    </div>
 
   <?php
 

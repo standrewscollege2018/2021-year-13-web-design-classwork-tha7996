@@ -26,6 +26,5 @@ $name = $_SESSION['user_name'];
   <h2>About</h2>
   <a href='index.php?page=about'><button type="button" class="btn home-button">About</button></a><br>
 
-  <h2>Contact</h2>
-  <a href='index.php?page=contact'><button type="button" class="btn home-button">Contact</button></a><br>
+
 </div>
