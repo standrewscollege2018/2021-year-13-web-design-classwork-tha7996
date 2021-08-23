@@ -38,7 +38,6 @@
 
         session_start();
 
-        $_SESSION['app']=True;
 
         if ($_SESSION['app']==True) {
 

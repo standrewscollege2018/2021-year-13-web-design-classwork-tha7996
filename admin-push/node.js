@@ -20,7 +20,7 @@ const options = {
 };
 
 // get subscrbed user's subscriptions using php and mysql
-fetch('http://localhost/2021-year-13-web-design-classwork-tha7996/admin-push/getusers.php')
+fetch('http://localhost/2021-year-13-web-design-classwork-tha7996/admin-push/get-all-subscribed-users.php')
   .then((response) => response.json())
   // pass responses to function to send notifcations. data is in form of json array
   .then(data => sendEachNotifcation(data))
