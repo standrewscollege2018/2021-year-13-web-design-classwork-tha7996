@@ -20,7 +20,7 @@ else{
   $_SESSION['quizzes']=constant($quizzes_to_select);
   $first_quiz=$_SESSION['quizzes'][0];
 
-  header("Location: index.php?page=quiz&quiz_id=$first_quiz&category=$category");
+  header("Location: index.php?page=quiz&quiz_id=$first_quiz");
 
 }
 

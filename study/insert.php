@@ -3,8 +3,6 @@
 <?php
 include('dbconnect.php');
 
-$quizzes_category=$_GET['category'];
-
 function main(){
   // creates values for fields needed, creates sql statement and inserts into database.
   global $dbconnect;
@@ -55,10 +53,12 @@ function main(){
     // if quiz last in category, show success message, else redirect to next quiz
     if ($quiz_id==end($_SESSION['quizzes'])) {
       echo "All quizzes inserted successfully!";
+
+      echo "<a href='index.php'>Go home</a>";
     }
     else{
       $next_quiz=$_SESSION['quizzes'][array_search($quiz_id, $_SESSION['quizzes'])+1];
-      header("Location: index.php?page=quiz&quiz_id=$next_quiz&category=$quizzes_category");
+      header("Location: index.php?page=quiz&quiz_id=$next_quiz");
 
     }
 
@@ -110,7 +110,7 @@ function create_quiz_results(){
       'category' => '',
       'question_type' => "$question_type",
       // do this one later
-      'question_title' => '',
+      'question_title' => 'B',
       'user_compare_text' => ''
     );
 

@@ -97,32 +97,35 @@ function showInstallPromotion(){
   });
 }
 
-function hideInstallPromotion(){
-  console.log('PWA installed');
-  location.reload();
-}
 
-
-
-// Initialize deferredPrompt for use later to show browser install prompt.
-let deferredPrompt;
+// Initialize prompt for use later to show browser install prompt.
+let prompt;
 
 window.addEventListener('beforeinstallprompt', (e) => {
   // Prevent the mini-infobar from appearing on mobile
   e.preventDefault();
   // Stash the event so it can be triggered later.
-  deferredPrompt = e;
-  // Update UI notify the user they can install the PWA
-  showInstallPromotion();
-  // Optionally, send analytics event that PWA install promo was shown.
+  prompt = e;
+  // // Update UI notify the user they can install the PWA
+  // showInstallPromotion();
+
   console.log(`'beforeinstallprompt' event was fired.`);
 });
+
+installButton.addEventListener('click', function(){
+   prompt.prompt();
+   let result = await that.prompt.userChoice;
+    if (result&&result.outcome === 'accepted') {
+       installed = true;
+    }
+})
 
 window.addEventListener('appinstalled', () => {
   // Hide the app-provided install promotion
   hideInstallPromotion();
   // Clear the deferredPrompt so it can be garbage collected
-  deferredPrompt = null;
-  // Optionally, send analytics event to indicate successful install
+  prompt = null;
   console.log('PWA was installed');
+  // reload so that 
+  location.reload();
 });

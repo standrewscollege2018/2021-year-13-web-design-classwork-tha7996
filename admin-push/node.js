@@ -39,6 +39,6 @@ function sendEachNotifcation(pushSubscriptions){
       pushSubscription,
       payload,
       options
-    );
+    ).catch(err => console.error(err));
   }
 }

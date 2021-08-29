@@ -12,27 +12,59 @@ $quiz_aa = mysqli_fetch_assoc($quiz_questions);
 // sort through quiz data and get question ids
 $quiz_settings = unserialize($quiz_aa['quiz_settings']);
 $qpages = unserialize($quiz_settings['qpages']);
-$qpages2 = unserialize($qpages[0]);
-$questions = unserialize($qpages2['questions']);
+$questions = $qpages[0]['questions'];
 
 $quiz_options=unserialize($quiz_settings['quiz_options']);
 $quiz_name = $quiz_options['quiz_name'];
      echo "<h1>$quiz_name</h1>";
 
+$question_number=0;
 
 foreach ($questions as $question_id) {
-  $sql = "SELECT * FROM wp_mlw_questions WHERE question_id=$question_id";
-  $questions = mysqli_query($dbconnect, $sql);
+  $question_sql = "SELECT * FROM wp_mlw_questions WHERE question_id=$question_id";
+  $questions = mysqli_query($dbconnect, $question_sql);
+  $question_aa = mysqli_fetch_assoc($questions);
 
-  while ($aa = mysqli_fetch_assoc($questions)){
-    $question = $aa['question_settings'];
+  $question_settings = unserialize($question_aa['question_settings']);
+  echo $question_settings['question_title'];
+  echo "<br>";
 
-    $question_stuff = unserialize($question);
-    // print_r($question_stuff);
-    echo $question_stuff['question_title'];
-    echo "<br/>";
+  $answer_array = unserialize($question_aa['answer_array']);
+  $question_type = $question_aa['question_type_new'];
+
+  // multichoice question type
+  if ($question_type == 0){
+  // display mutlichoice options
+    foreach($answer_array as $answer){
+      // option is each multiple choice option
+      $option = $answer[0];
+      echo("<input type='radio' name='$question_number' value='$option' $required>$option");
+    }
   }
+  // short answer question type
+  else if ($question_type == 3){
+    echo "<input type='text' name='$question_number' $required><br>";
+  }
+  // number choice
+  else if ($question_type == 7){
+    echo "<input type='number' name='$question_number' $required>";
+  }
+
+  // this hidden input sends the question type of the latest question so that this can be inserted into databases
+  $info = serialize(array($question_id, $question_type));
+  echo "<input type='hidden' name='type$question_number' value='$info'/>";
+
+  $question_number += 1;
+
+
+  echo "<br/>";
+
+
 }
+echo "<input type='submit'>";
+echo("</form>");
+
+
 
 
 

@@ -3,7 +3,7 @@
 // hese are used to:
 // 1. display a specific set in the 'quizzes' page
 
-define("TEEN_BASELINE_QUIZ_IDS", [5,8,12,13,15,21,23,26,27,29,48]);
+define("TEEN_BASELINE_QUIZ_IDS", [20,5,8,12,13,15,21,23,26,27,29,48]);
 define("TEEN_WEEKLY_QUIZ_IDS", [25,30,31,37,40,43,49]);
 define("TEEN_END_QUIZ_IDS", [9,17,32,33,34,35,36,38,41,42,44,50]);
 define("PARENT_BASELINE_QUIZ_IDS", [7,14,16,22,28,39,52]);

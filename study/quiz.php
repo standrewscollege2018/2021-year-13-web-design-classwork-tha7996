@@ -5,7 +5,7 @@
 define("VERT_MULTI_CHOICE_QTYPE", 0);
 define("HORI_MULTI_CHOICE_QTYPE", 1);
 define("SHORT_ANSWER_QTYPE", 3);
-define("NUMBER_QTYPE", 1);
+define("NUMBER_QTYPE", 7);
 
 
 function display_question($aa, $question_number){
@@ -50,7 +50,7 @@ function display_question($aa, $question_number){
   }
   // number choice
   else if ($question_type == NUMBER_QTYPE){
-    echo "<input type='number' name='$question_number' $required>";
+    echo "<input type='number' name='$question_number' $required><br>";
   }
 
   // this hidden input sends the question id and type of the latest question so that this can be inserted into databases
@@ -62,7 +62,6 @@ function display_question($aa, $question_number){
 
 
 $quiz_id = $_GET['quiz_id'];
-$quizzes_category = $_GET['category'];
 
 
 include('quiz_data.php');
@@ -97,10 +96,9 @@ else{
        <!-- navbar for quiz. This is created so low down as quiz name is needed.-->
        <div class="container-fluid quiz-navbar">
          <div class="row">
-           <!-- <a href="index.php?page=quizzes&questions=<?php echo $_GET['category']; ?>"><h3 class='col-1'><</h3></a> -->
+
            <h3 class='col'><?php echo $quiz_name ?></h3>
-           <!-- this centers the middle column -->
-           <!-- <h3 class='col-1'></h3> -->
+
          </div>
        </div>
 
@@ -109,7 +107,7 @@ else{
         <?php
 
        // form for question
-       echo("<form action='index.php?page=insert&quiz_id=$quiz_id&quiz_name=$quiz_name&category=$quizzes_category' method='post'>");
+       echo("<form action='index.php?page=insert&quiz_id=$quiz_id&quiz_name=$quiz_name' method='post'>");
 
        // will keep track of question
        $question_number = 0;

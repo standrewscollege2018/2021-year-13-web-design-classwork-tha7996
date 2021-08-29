@@ -39,7 +39,7 @@
         session_start();
 
 
-        if ($_SESSION['app']==True) {
+        if (1==1) {
 
           if (isset($_GET['page'])) {
             if ($_GET['page']!='login' && $_GET['page']!='logout' && !isset($_SESSION['user_ID'])){
