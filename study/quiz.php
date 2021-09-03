@@ -6,6 +6,7 @@ define("VERT_MULTI_CHOICE_QTYPE", 0);
 define("HORI_MULTI_CHOICE_QTYPE", 1);
 define("SHORT_ANSWER_QTYPE", 3);
 define("NUMBER_QTYPE", 7);
+define("MULTIPLE_SELECT_QTYPE",4);
 
 
 function display_question($aa, $question_number){
@@ -51,6 +52,17 @@ function display_question($aa, $question_number){
   // number choice
   else if ($question_type == NUMBER_QTYPE){
     echo "<input type='number' name='$question_number' $required><br>";
+  }
+  // multiple select
+  if ($question_type == MULTIPLE_SELECT_QTYPE){
+    // display multiple select
+    foreach($answer_array as $answer){
+      $option = $answer[0];
+      echo("<div class='checkbox-group' $required>");
+      echo("<input type='checkbox' id='$question_number$option' name='$question_number' value='$option'>");
+      echo("<label for='$question_number$option'>$option</label><br>");
+      echo("</div>");
+    }
   }
 
   // this hidden input sends the question id and type of the latest question so that this can be inserted into databases

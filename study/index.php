@@ -30,49 +30,75 @@
 
   <body onload='getPWADisplayMode()'>
 
-    <div id='demo'>
-    </div>
 
   <?php
 
 
-        session_start();
+    session_start();
 
 
-        if (1==1) {
+    if ($_SESSION['app']==False) {
 
-          if (isset($_GET['page'])) {
-            if ($_GET['page']!='login' && $_GET['page']!='logout' && !isset($_SESSION['user_ID'])){
-                header('Location: index.php?page=login&error=loggedout');
-              }
+      if (isset($_GET['page'])) {
+        if ($_GET['page']!='login' && $_GET['page']!='logout' && !isset($_SESSION['user_ID'])){
+            header('Location: index.php?page=login&error=loggedout');
+          }
 
-              // if logged in, display page
-              $page = $_GET['page'];
-              include("$page.php");
+          // if logged in, display page
+          $page = $_GET['page'];
+          include("$page.php");
 
-            }
-            else{
-              header('Location: index.php?page=login&error=loggedout');
-            }
         }
-
         else{
-          ?>
-
-          <div class="landing-page">
-
-            <h1>Taiora Trial App</h1>
-            <p>To download our app, please press the button below</p>
-            <button class="install-button" name="button">Install Taiora!</button>
-            <br>
-            <p>If you have already installed the app, please open it from the homescreen</p>
-            <p>If you are on the installed app, please refresh this page</p>
-
-          </div>
-
-
-          <?php
+          header('Location: index.php?page=login&error=loggedout');
         }
+    }
+
+    else{
+
+      echo '<div class="landing-page">';
+
+      // pwa is not installed. However, ios does not allow custom install experiences. Therefore, a different process is needed for each platform.
+      // if android
+      if($_SESSION['ios']==False){
+        ?>
+
+          <h1>Taiora Trial App</h1>
+          <p>To download our app, please press the button below.</p>
+          <!-- install button will prompt user to install app -->
+          <button class="install-button" name="button" style="margin-bottom: 8px;">Install Taiora!</button>
+          <br>
+          <b>If you have already installed the app, please open it from the homescreen.</b><br>
+          <b>If you are on the installed app, please refresh this page by clicking </b><a style='color: blue; padding: 0px;' href='index.php'>here</a>.</p>
+
+        <?php
+      }
+      // ios
+      else{
+        ?>
+
+          <h1>Taiora Trial App</h1>
+          <p>To install our app, please follow the below instructions:</p>
+          <ol style='list-style:none;'>
+            <li><b>1.</b> Please navigate to this same page on Safari, if you are not already.</li>
+            <li><b>2.</b> Press the button in the centre bottom of your screen.</li>
+            <li><b>3.</b> Scroll down and select 'Add to Home Screen'</li>
+            <li><b>4.</b> Click 'Add'</li>
+            <li><b>5.</b> Open the app from the homescreen.</li>
+          </ol>
+
+          <b>If you have already installed the app, please open it from the homescreen.</b><br>
+          <b>If you are on the installed app, please refresh this page by clicking </b><a style='color: blue; padding: 0px;' href='index.php'>here</a>.</p>
+
+
+
+
+        <?php
+      }
+
+
+      echo "</div>";
+    }
 
 
 

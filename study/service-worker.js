@@ -63,8 +63,8 @@ self.addEventListener("push", function(e) {
   console.log('Push recieved');
 
   // if there is a payload, assign this to body, else default
-  if (event.data) {
-    body = event.data.text();
+  if (e.data) {
+    body = e.data.text();
   } else {
     body = 'You have quizzes to complete!';
   }
