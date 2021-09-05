@@ -16,7 +16,8 @@ function display_question($aa, $question_number){
 
   $question_id = $aa['question_id'];
   $question_settings = unserialize($aa['question_settings']);
-  echo $question_settings['question_title'];
+  $question_name=$question_settings['question_title'];
+  echo $question_name;
   echo "<br>";
 
   $answer_array = unserialize($aa['answer_array']);
@@ -66,7 +67,7 @@ function display_question($aa, $question_number){
   }
 
   // this hidden input sends the question id and type of the latest question so that this can be inserted into databases
-  $info = serialize(array($question_id, $question_type));
+  $info = serialize(array($question_id, $question_type,$question_name));
   echo "<input type='hidden' name='type$question_number' value='$info'/>";
 
   echo "<br/>";

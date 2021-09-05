@@ -1,4 +1,3 @@
-
 <?php
 
 $mode=$_GET['app'];
@@ -13,12 +12,12 @@ session_start();
       $_SESSION["app"]=True;
     }
 
-    if ($ios=='false' || $ios==False || $ios==0) {
+    if ($ios=='notios') {
       $_SESSION["ios"]=False;
     }
     else{
 
-      $_SESSION["ios"];
+      $_SESSION["ios"]=True;
     }
 
  ?>

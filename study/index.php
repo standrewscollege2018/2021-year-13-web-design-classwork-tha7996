@@ -37,7 +37,7 @@
     session_start();
 
 
-    if ($_SESSION['app']==False) {
+    if ($_SESSION['app']==true) {
 
       if (isset($_GET['page'])) {
         if ($_GET['page']!='login' && $_GET['page']!='logout' && !isset($_SESSION['user_ID'])){
@@ -70,6 +70,7 @@
           <br>
           <b>If you have already installed the app, please open it from the homescreen.</b><br>
           <b>If you are on the installed app, please refresh this page by clicking </b><a style='color: blue; padding: 0px;' href='index.php'>here</a>.</p>
+
 
         <?php
       }

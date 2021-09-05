@@ -24,7 +24,7 @@ function main(){
   $user_ip = $_SERVER['REMOTE_ADDR'];
   // time. who knows why theres two.
   $time_taken = date("h:m:s A m/d/Y");
-  $time_taken_real = date("Y-m-d h:m:s A");
+  $time_taken_real = date("Y-m-d h:m:s");
   // call to function for this one.
   $quiz_results = create_quiz_results();
   // others
@@ -94,6 +94,7 @@ function create_quiz_results(){
     $question_info = unserialize($_POST["type$question_number"]);
     $question_id = $question_info[0];
     $question_type = $question_info[1];
+    $question_name = $question_info[2];
 
     $question_answer = $_POST["$question_number"];
 
@@ -104,13 +105,11 @@ function create_quiz_results(){
       2 => '',
       3 => '',
       'correct' => 'correct',
-      // question id. will leave for now.
       'id' => "$question_id",
       'points' => 0,
       'category' => '',
       'question_type' => "$question_type",
-      // do this one later
-      'question_title' => 'B',
+      'question_title' => "$question_name",
       'user_compare_text' => ''
     );
 

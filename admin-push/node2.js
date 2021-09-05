@@ -7,7 +7,7 @@ const vapidPrivateKey = '0IqLNVKDgPSNz8sHL9eDGQguPnYqolZzIEJCyX2xUJY';
 
 // will be set using fetch later
 var pushSubscriptions;
-const payload = 'Here is a payload!';
+const payload = 'Do your quizzes!!!';
 const options = {
   TTL: 60,
 
@@ -19,7 +19,7 @@ const options = {
 
 };
 
-const pushSubscription = {"endpoint":"https://fcm.googleapis.com/fcm/send/cQsYrjRmzsU:APA91bGMmglCCrZVbImkVCvbowMdbjNhiFSU_5DPXqGRK1yTrpJ4D1-2ylNYiesxcVSVuONju-vPipBWG3Pk5sgDdntShj7LInJ2TNdvAgF2SiSG58xnWZk9J0HmdBN33MD-nftqihhA","expirationTime":null,"keys":{"p256dh":"BPwvGbG_59YPtkMvDadgDh96yzu_WZxYULXLlyUlp3KWgQE3gH6luqwdZBNOmlq4BrYGmKzOGBOjc5lyILjK-yc","auth":"s9BsXsw5s9y7aWuDW0q5-A"}};
+const pushSubscription = {"endpoint":"https://fcm.googleapis.com/fcm/send/cFtLxrBo4rc:APA91bF6Oyw7YysJ9cogQsJOTzb0vIFX6IBLzzR42meTwCBM9tqLSQ2qyecRoTov6cXCPs1sRfRSr4yFWyYIJwm7Fdz5wnKmfK6lArhnhSIv99-HToEWA39l_JB-KJ3FZA8A1FeuhscY","expirationTime":null,"keys":{"p256dh":"BLlGCDOXDo0jleVpkk_ylTcQ4SubKC_Le9RlfjKBxsQOWmB82OG0Wab_-q82zlq177oqY1SU2fSZCqK1tO0zKOQ","auth":"mWF0GcbOBYzCKPuWglq_-Q"}}
 
     // webPush API function. Sends notfication
 webPush.sendNotification(

@@ -1,4 +1,3 @@
-
 // register service worker
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
@@ -27,16 +26,15 @@ function getPWADisplayMode() {
   console.log('Display Mode: ', mode);
 
   // get whether on iOS. Code found on Stack Overflow.
-  var isIos=[
-      'iPad Simulator',
-      'iPhone Simulator',
-      'iPod Simulator',
-      'iPad',
-      'iPhone',
-      'iPod'
-    ].includes(navigator.platform)
-    // iPad on iOS 13 detection
-    || (navigator.userAgent.includes("Mac") && "ontouchend" in document)
+  if (['iPad','iPhone','iPod'].includes(navigator.platform)
+      // iPad on iOS 13 detection
+      || (navigator.userAgent.includes("Mac") && "ontouchend" in document)){
+          isIos='ios';
+      }
+      else{
+          isIos='notios';
+      }
+
 
   console.log('On iOS: '+isIos);
 
