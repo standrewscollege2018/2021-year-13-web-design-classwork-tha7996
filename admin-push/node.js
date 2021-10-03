@@ -17,6 +17,7 @@ const options = {
     privateKey: vapidPrivateKey
   }
 
+
 };
 
 // get subscrbed user's subscriptions using php and mysql

@@ -49,17 +49,19 @@ function main(){
     //  Set the parameters values and execute
     mysqli_stmt_execute($stmt);
 
+    // I have error catching for this, but it is below other code
+
     // record has been inserted.
-    // if quiz last in category, show success message, else redirect to next quiz
+    // if survey last in category, show success message, else redirect to next quiz
     if ($quiz_id==end($_SESSION['quizzes'])) {
       echo "All quizzes inserted successfully!";
 
       echo "<a href='index.php'>Go home</a>";
     }
     else{
+      // go to next survey
       $next_quiz=$_SESSION['quizzes'][array_search($quiz_id, $_SESSION['quizzes'])+1];
       header("Location: index.php?page=quiz&quiz_id=$next_quiz");
-
     }
 
 

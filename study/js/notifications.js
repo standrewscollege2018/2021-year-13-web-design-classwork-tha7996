@@ -122,7 +122,7 @@ function unsubscribeUser() {
   .then(() => {
 
     // this will delete object from database.
-    updateSubscriptionOnServer(null);
+    updateSubscriptionOnServer(NULL);
 
     console.log('User unsubscribed');
     isSubscribed = false;
@@ -131,27 +131,14 @@ function unsubscribeUser() {
   });
 }
 
-// update subscription. currently just prints subscription object & endpoint
-// later will contain php which will insert/delete subscription object from database.
+// update subscription on server
 function updateSubscriptionOnServer(subscription) {
-  // Here's where you would send the subscription to the application server
 
-  const subscriptionJson = document.querySelector('.js-subscription-json');
-  const endpointURL = document.querySelector('.js-endpoint-url');
-  const subAndEndpoint = document.querySelector('.js-sub-endpoint');
-
-  if (subscription) {
-    subscriptionJson.textContent = JSON.stringify(subscription);
-    endpointURL.textContent = subscription.endpoint;
-    subAndEndpoint.style.display = 'block';
-  } else {
-    subAndEndpoint.style.display = 'none';
-  }
-
-  // this will be sent to php script in order to insert into database
+  // FormData object mimics POST data. can thus send subscription object to PhP page
   const subscriptionData = new FormData();
   subscriptionData.append('subscription_object', JSON.stringify(subscription));
 
+  // this page will update the subscription on server
   fetch('update-subscription.php', {
     method: 'POST',
     body: subscriptionData,

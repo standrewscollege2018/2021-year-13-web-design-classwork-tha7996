@@ -54,15 +54,15 @@ function check_login_details($username, $password){
 }
 
 function get_user_type($user_id){
-  // get the capabilities of the account (i.e. teen or parent)
+  // get the account type (i.e. teen or parent)
 
   global $dbconnect;
 
   // this information stored in usermeta table
-  $sql = "SELECT * FROM wp_usermeta WHERE user_id='$user_id' AND meta_key='wp_capabilities'";
+  $sql = "SELECT meta_value FROM wp_usermeta WHERE user_id='$user_id' AND meta_key='wp_capabilities'";
   $result = mysqli_query($dbconnect, $sql);
   // stored in serialized array, as users can have mutiple capabilities
-  $user_capabilities = unserialize(mysqli_fetch_assoc($result)['meta_value']);
+  $user_capabilities = unserialize(mysqli_fetch_assoc($result));
 
 
   if(array_key_exists("teen", $user_capabilities)){

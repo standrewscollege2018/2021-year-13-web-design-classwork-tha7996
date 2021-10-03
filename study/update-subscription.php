@@ -15,7 +15,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
   $meta_key = 'push_subscription';
 
   // check if sub object already exists in database
-  $sql = "SELECT * FROM wp_usermeta WHERE user_id=$user_id AND meta_key='push_subscription'";
+  $sql = "SELECT meta_value FROM wp_usermeta WHERE user_id=$user_id AND meta_key='push_subscription'";
   $result = mysqli_query($dbconnect, $sql);
 
   if (mysqli_num_rows($result) == 0) {
@@ -58,6 +58,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
         $meta_value = $sub_object;
       }
 
+      $update_sql = "UPDATE wp_usermeta SET meta_value=? WHERE user_id=? AND meta_key=?";
 
       if($stmt = mysqli_prepare($dbconnect, $update_sql)){
 
